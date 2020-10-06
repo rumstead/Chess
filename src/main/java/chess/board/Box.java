@@ -27,7 +27,7 @@ public class Box {
             this.piece = piece;
             return removedPiece;
         }
-        throw new IllegalStateException("Cannot move to this box: " + this + "\n" + piece);
+        throw new IllegalStateException("Cannot move to this box: " + this);
     }
 
     public void reset() {
@@ -47,7 +47,7 @@ public class Box {
     }
 
     private boolean isEmpty() {
-        return this.piece == EMPTY_PIECE;
+        return this.piece.equals(EMPTY_PIECE);
     }
 
     @Override
