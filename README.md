@@ -9,7 +9,7 @@ Responsible for holding state of the game. Ie, where the pieces are for each pla
 
 ### Box
 Responsible for a single coordinate on the board. Also, has the logic to determine if a piece can move to its
- coordinate.
+ coordinate
 
 ### Coordinate
 An x,y coordinate on the board

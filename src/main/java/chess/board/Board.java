@@ -81,8 +81,8 @@ public class Board {
 
     public List<Piece> getValidPiecesForPlayer(Player player) {
         return Arrays.stream(boxes).flatMap(Arrays::stream)
-                .filter(box -> box.getPiece().getPlayer().equals(player))
                 .map(Box::getPiece)
+                .filter(piece -> piece.getPlayer().equals(player))
                 .collect(Collectors.toList());
     }
 
@@ -116,14 +116,14 @@ public class Board {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Board board = (Board) o;
-        return Arrays.equals(boxes, board.boxes) &&
+        return Arrays.deepEquals(boxes, board.boxes) &&
                 takenPieces.equals(board.takenPieces);
     }
 
     @Override
     public int hashCode() {
         int result = Objects.hash(takenPieces);
-        result = 31 * result + Arrays.hashCode(boxes);
+        result = 31 * result + Arrays.deepHashCode(boxes);
         return result;
     }
 }

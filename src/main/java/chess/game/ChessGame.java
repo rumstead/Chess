@@ -77,13 +77,16 @@ public class ChessGame {
 
     // Loop through other players pieces and see if they can move to kings location
     public boolean isCheck(Player player) {
-        boolean isCheck = false;
+        boolean isCheck;
         final List<Piece> validPiecesForPlayer = board.getValidPiecesForPlayer(player);
         final Box kingBox = board.getBoxForPiece(new King(player));
         for(Piece piece : validPiecesForPlayer) {
             Box sourceBox = board.getBoxForPiece(piece);
             isCheck = piece.isValidMove(sourceBox, kingBox);
+            if(isCheck) {
+                return true;
+            }
         }
-        return isCheck;
+        return false;
     }
 }
